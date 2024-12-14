@@ -355,12 +355,23 @@ display: none;
 </div>
 
 
-<pre class="r"><code>set.seed(51)
-xs &lt;- sample(1:100, 25)
-xs</code></pre>
-<pre><code>##  [1] 39 83 93 46 29 91 21 66 74 38 37 60  1 72 89 19 50  4 76 63 23 61 26 77 64</code></pre>
-<pre class="r"><code>me &lt;- median(xs)</code></pre>
-<p>Median is 60.</p>
+<pre class="r"><code>modern &lt;- top10 %&gt;%
+  filter(date &gt;= &quot;1980-01-01&quot;)</code></pre>
+<pre class="r"><code>artists &lt;- modern %&gt;%
+  count(artist) %&gt;%
+  arrange(-n) %&gt;%
+  filter(!artist %in% c(&quot;Soundtrack&quot;, &quot;Various Artists&quot;))
+
+head(artists)</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   artist             n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 Taylor Swift    2205
+## 2 Drake           1925
+## 3 Eminem          1177
+## 4 Kendrick Lamar   946
+## 5 Garth Brooks     901
+## 6 The Weeknd       885</code></pre>
 
 
 
